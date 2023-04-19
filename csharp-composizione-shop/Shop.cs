@@ -8,6 +8,7 @@ namespace csharp_composizione_shop
 {
 	public class Shop
 	{
+		//ATTRIBUTES
 		private string name;
 		public string Name
 		{
@@ -49,7 +50,14 @@ namespace csharp_composizione_shop
 			}
 		}
 
-		private List<Product> shopProducts;
+		private List<Product> shopProducts; //LIST
+		public List<Product> ShopProducts
+		{
+			get
+			{
+				return this.shopProducts;
+			}
+		}
 
 		//CONSTRUCTOR
 		public Shop(string name, string city, string address, string houseNumber)
@@ -61,5 +69,44 @@ namespace csharp_composizione_shop
 			this.shopProducts = new List<Product>();
 		}
 
+		//METHOD
+
+		//Add new product to shop list
+		public void AddNewProductToShopList(Product newProduct)
+		{
+			shopProducts.Add(newProduct);
+		}
+
+		//add new list of products to shop list
+		public void AddNewProductListToShopList(List<Product> productList)
+		{
+			foreach (Product newProductList in productList)
+			{
+				this.shopProducts.Add(newProductList);
+			}
+		}
+
+		//print shop info + products + category
+		public string PrintShopInfo()
+		{
+			string shopInfo =
+			$"Nome: {this.name} \n" +
+			$"Città: {this.city} \n" +
+			$"Indirizzo: {this.address} \n" +
+			$"Numero civico: {this.houseNumber} \n" +
+			$"Prodotti: \n";
+
+			foreach(Product productsInList in shopProducts)
+			{
+				shopInfo += "-" + productsInList.getProductInfo() + "\n";
+			}
+
+			shopInfo += "\n";
+			return shopInfo;
+		}
+
+
 	}
+
+	
 }

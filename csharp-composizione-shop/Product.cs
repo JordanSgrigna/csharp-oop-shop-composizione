@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace csharp_composizione_shop
 {
 	public class Product
-	{	
+	{
 		//ATTRIBUTES + PROPERTIES
 		private string code;
 		public string Code
@@ -69,15 +69,25 @@ namespace csharp_composizione_shop
 				this.tax = value;
 			}
 		}
+		private Category category;
+		public Category Category
+		{
+			get
+			{
+				return this.category;
+			}
+			
+		}
 
 		//CONSTRUCTOR
-		public Product(string name, string description, float price, int tax = 22)
+		public Product(string name, string description, float price, string categoryName, int tax = 22)
 		{
 			this.name = name;
 			this.description = description;
 			this.code = getCodePadLeft8();
 			this.price = price;
 			this.tax = tax;
+			this.category = new Category(categoryName);
 		}
 
 		//METHODS
@@ -122,6 +132,23 @@ namespace csharp_composizione_shop
 			return codeStringPadded;
 
 		}
+
+		public string getProductInfo()
+		{
+			string infoProduct =
+			$"Nome: {this.name} \n" +
+			$"Descrizione: {this.description} \n" +
+			$"Codice: {this.code} \n" +
+			$"Prezzo: {this.price} \n" +
+			$"Categoria: \n" +
+			$"{category.getCategoryInfo()}";
+
+			return infoProduct;
+		}
+
+
+
+
 
 
 

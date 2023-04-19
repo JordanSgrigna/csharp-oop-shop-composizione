@@ -22,18 +22,6 @@ namespace csharp_composizione_shop
 			}
 		}
 
-		private string description;
-		public string Description
-		{
-			get
-			{
-				return this.description;
-			}
-			set
-			{
-				this.description = value;
-			}
-		}
 
 		private string code;
 		public string Code
@@ -45,10 +33,9 @@ namespace csharp_composizione_shop
 		}
 
 		//CONSTRUCTOR
-		public Category(string name, string description)
+		public Category(string name)
 		{
 			this.name = name;
-			this.description = description;
 			this.code = getCodePadLeft8();
 		}
 
@@ -93,6 +80,15 @@ namespace csharp_composizione_shop
 			string codeStringPadded = codeString.PadLeft(8, '0');
 			return codeStringPadded;
 
+		}
+
+		public string getCategoryInfo()
+		{
+			string infoCategory =
+			$"Nome: {this.name} \n" +
+			$"Codice: {this.code} \n";
+
+			return infoCategory;
 		}
 	}
 }
